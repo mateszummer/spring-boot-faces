@@ -1,4 +1,4 @@
-package com.auth0.samples.bootfaces;
+package com.mateszummer.bootfaces.Controller;
 
 import org.ocpsoft.rewrite.annotation.Join;
 import org.ocpsoft.rewrite.annotation.RequestAction;
@@ -9,26 +9,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import com.mateszummer.bootfaces.Model.User;
+import com.mateszummer.bootfaces.Repository.UserRepo;
+
 import java.util.List;
 
 @Scope (value = "session")
-@Component (value = "productList")
-@ELBeanName(value = "productList")
-@Join(path = "/", to = "/product-list.jsf")
-public class ProductListController {
+@Component (value = "userList")
+@ELBeanName(value = "userList")
+@Join(path = "/", to = "/user-list.jsf")
+public class UserListController {
     @Autowired
-    private ProductRepository productRepository;
+    private UserRepo userRepo;
 
-    private List<Product> products;
+    private List<User> users;
 
     @Deferred
     @RequestAction
     @IgnorePostback
     public void loadData() {
-        products = productRepository.findAll();
+        users = userRepo.findAll();
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public List<User> getUsers() {
+        return users;
+    }
+    
+    public String deleteUser(User user) {
+    	userRepo.delete(user);
+    	return "/user-list.xhtml?faces-redirect=true";
     }
 }

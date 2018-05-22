@@ -1,27 +1,25 @@
-package com.auth0.samples.bootfaces;
+package com.mateszummer.bootfaces.Model;
 
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.math.BigDecimal;
+import javax.persistence.Table;
 
 @Entity
-public class Product {
+@Table(name="userTable")
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column
     private String name;
 
-    @Column
-    private BigDecimal price;
+    private String email;
    
 
-    protected Product() {
+    public User() {
     }
 
     public void setId(Long id) {
@@ -32,13 +30,13 @@ public class Product {
 		this.name = name;
 	}
 
-	public void setPrice(BigDecimal price) {
-		this.price = price;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public Product(String name, BigDecimal price) {
+	public User(String name, String email) {
         this.name = name;
-        this.price = price;
+        this.email = email;
     }
 
 	public Long getId() {
@@ -49,8 +47,8 @@ public class Product {
 		return name;
 	}
 
-	public BigDecimal getPrice() {
-		return price;
+	public String getEmail() {
+		return email;
 	}
 }
 

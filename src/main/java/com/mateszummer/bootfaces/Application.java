@@ -1,4 +1,4 @@
-package com.auth0.samples.bootfaces;
+package com.mateszummer.bootfaces;
 
 import org.ocpsoft.rewrite.servlet.RewriteFilter;
 import org.springframework.boot.SpringApplication;
@@ -14,7 +14,7 @@ import javax.servlet.DispatcherType;
 import java.util.EnumSet;
 
 @EnableAutoConfiguration
-@ComponentScan({"com.auth0.samples.bootfaces"})
+@ComponentScan({"com.mateszummer.bootfaces"})
 public class Application extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {

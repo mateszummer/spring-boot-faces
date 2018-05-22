@@ -6,14 +6,14 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:p="http://primefaces.org/ui">
 <ui:composition template="layout.xhtml">
     <ui:define name="content">
-        <h:form id="productForm">
-            <p:panel header="Product Details">
+        <h:form id="userForm">
+            <p:panel header="User Details">
                 <h:panelGrid columns="1">
                     <p:outputLabel for="name" value="Name: " />
-                    <p:inputText id="name" value="#{productController.product.name}" />
-                    <p:outputLabel for="price" value="Price: " />
-                    <p:inputNumber id="price" value="#{productController.product.price}" />
-                    <h:commandButton value="Save" action="#{productController.save}" />
+                    <p:inputText id="name" value="#{userController.user.name}" />
+                    <p:outputLabel for="email" value="Email: " />
+                    <p:inputText id="email" value="#{userController.user.email}" />
+                    <h:commandButton value="Save" action="#{userController.save}" />
                 </h:panelGrid>
             </p:panel>
         </h:form>

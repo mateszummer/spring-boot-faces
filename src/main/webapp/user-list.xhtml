@@ -9,23 +9,26 @@
 <ui:composition template="layout.xhtml">
     <ui:define name="content">
         <h:form id="form">
-            <p:panel header="Products List">
-                <p:dataTable id="table" var="product" value="#{productList.products}">
+            <p:panel header="User List">
+                <p:dataTable id="table" var="user" value="#{userList.users}">
                     <p:column>
                         <f:facet name="header"># Id</f:facet>
-                        <h:outputText value="#{product.id}" />
+                        <h:outputText value="#{user.id}" />
                     </p:column>
 
                     <p:column>
                         <f:facet name="header">Name</f:facet>
-                        <h:outputText value="#{product.name}" />
+                        <h:outputText value="#{user.name}" />
                     </p:column>
 
                     <p:column>
-                        <f:facet name="header">Price</f:facet>
-                        <h:outputText value="#{product.price}">
-                            <f:convertNumber type="currency" currencySymbol="$ " />
+                        <f:facet name="header">Email</f:facet>
+                        <h:outputText value="#{user.email}">
                         </h:outputText>
+                    </p:column>
+                    <p:column>
+                    	<f:facet name="header">Delete</f:facet>
+                    	<h:commandButton value="delete" action="#{userList.deleteUser(user)}" />
                     </p:column>
                 </p:dataTable>
             </p:panel>
