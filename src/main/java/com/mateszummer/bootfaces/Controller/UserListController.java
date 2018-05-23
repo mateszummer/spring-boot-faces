@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import com.mateszummer.bootfaces.DTO.UserDTO;
 import com.mateszummer.bootfaces.Model.User;
 import com.mateszummer.bootfaces.Repository.UserRepo;
+import com.mateszummer.bootfaces.Service.UserService;
 
 import java.util.List;
 
@@ -20,23 +22,23 @@ import java.util.List;
 @Join(path = "/", to = "/user-list.jsf")
 public class UserListController {
     @Autowired
-    private UserRepo userRepo;
+    private UserService userService;
 
-    private List<User> users;
+    private List<UserDTO> userDTOs;
 
     @Deferred
     @RequestAction
     @IgnorePostback
     public void loadData() {
-        users = userRepo.findAll();
+        userDTOs = userService.getAllUserDTOs();
     }
 
-    public List<User> getUsers() {
-        return users;
+    public List<UserDTO> getUsers() {
+        return userDTOs;
     }
     
-    public String deleteUser(User user) {
-    	userRepo.delete(user);
+    public String deleteUser(UserDTO userDTO) {
+    	userService.deleteUserDTO(userDTO);
     	return "/user-list.xhtml?faces-redirect=true";
     }
 }

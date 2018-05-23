@@ -1,5 +1,6 @@
 package com.mateszummer.bootfaces;
 
+import org.modelmapper.ModelMapper;
 import org.ocpsoft.rewrite.servlet.RewriteFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -34,5 +35,10 @@ public class Application extends SpringBootServletInitializer {
                 DispatcherType.ASYNC, DispatcherType.ERROR));
         rwFilter.addUrlPatterns("/*");
         return rwFilter;
+    }
+    
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
     }
 }

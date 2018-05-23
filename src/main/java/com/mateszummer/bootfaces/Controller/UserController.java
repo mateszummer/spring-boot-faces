@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import com.mateszummer.bootfaces.Model.User;
-import com.mateszummer.bootfaces.Repository.UserRepo;
+import com.mateszummer.bootfaces.DTO.UserDTO;
+import com.mateszummer.bootfaces.Service.UserService;
 
 @Scope(value = "session")
 @Component(value = "userController")
@@ -15,17 +15,17 @@ import com.mateszummer.bootfaces.Repository.UserRepo;
 @Join(path = "/user", to = "/user-form.jsf")
 public class UserController {
     @Autowired
-    private UserRepo userRepo;
+    private UserService userService;
 
-    private User user = new User();
+    private UserDTO userDTO = new UserDTO();
 
     public String save() {
-        userRepo.save(user);
-        user = new User();
+        userService.saveUserDTO(userDTO);
+        userDTO = new UserDTO();
         return "/user-list.xhtml?faces-redirect=true";
     }
 
-    public User getUser() {
-        return user;
+    public UserDTO getUser() {
+        return userDTO;
     }
 }
