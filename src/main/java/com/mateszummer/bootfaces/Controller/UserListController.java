@@ -10,8 +10,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.mateszummer.bootfaces.DTO.UserDTO;
-import com.mateszummer.bootfaces.Model.User;
-import com.mateszummer.bootfaces.Repository.UserRepo;
 import com.mateszummer.bootfaces.Service.UserService;
 
 import java.util.List;
